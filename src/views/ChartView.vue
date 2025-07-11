@@ -41,7 +41,7 @@
     const formattedTo = formatDate(to.value)
   
     if (code.value && formattedFrom && formattedTo) {
-      chartUrl.value = `http://localhost:8082/stock/chart/${code.value}?from=${formattedFrom}&to=${formattedTo}&t=${Date.now()}`
+      chartUrl.value = `/stock/chart/${code.value}?from=${formattedFrom}&to=${formattedTo}&t=${Date.now()}`
     }
   }
   </script>

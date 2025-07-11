@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/stock': {
-        target: 'http://localhost:8082',
+        target: 'http://172.20.10.2:8082',
         changeOrigin: true,
       },
     },
