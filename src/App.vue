@@ -6,6 +6,7 @@
         <el-menu-item index="/chart">歷史圖表</el-menu-item>
         <el-menu-item index="/cache">快取管理</el-menu-item>
         <el-menu-item index="/query-pie">圓餅統計</el-menu-item>
+        <el-menu-item index="/fugle-kdj">kdj</el-menu-item>
       </el-menu>
     </el-header>
     <el-main>
