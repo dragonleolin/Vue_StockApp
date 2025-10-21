@@ -16,7 +16,7 @@
         :class="['message', msg.sender === 'user' ? 'user' : 'ai']"
       >
         <div class="emoji-avatar">
-          {{ msg.sender === 'user' ? '🧑‍💻' : '🤖' }}
+          {{ msg.sender === 'user' ? '🧑' : '🤖' }}
         </div>
 
         <div class="bubble">
