@@ -1,1 +1,52 @@
+name: Deploy Vue Project
 
+on:
+  # 當你 push 到 main 分支時觸發自動部署
+  push:
+    branches: [ main ]
+
+# 設定 GitHub Actions 權限，允許它寫入 Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 如果有新的部署在跑，自動取消舊的，節省資源
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build Project
+        run: npm run build
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Vite 預設打包出來的資料夾名稱是 dist
+          path: './dist'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
