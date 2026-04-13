@@ -3,7 +3,22 @@ import vue from '@vitejs/plugin-vue'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-    plugins: [vue()],
-    // 重要：部署到 GitHub Pages 時，如果你的網址是 https://github.com/dragonleolin/
-    base: '/Vue_StockApp/',
+    base:'./',
+  plugins: [vue()],
+  define: {
+    global: {},
+  },
+  server: {
+    proxy: {
+      '/stock': {
+        target: 'http://172.20.10.2:8082',
+        changeOrigin: true,
+      },
+      '/ws': {
+        target: 'http://localhost:8082',
+        changeOrigin: true,
+        ws: true,
+      },
+    },
+  },
 })

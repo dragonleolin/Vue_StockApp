@@ -3,8 +3,8 @@
     <el-header>
       <el-menu mode="horizontal" :default-active="route.path" router>
         <el-menu-item index="/">股票查詢</el-menu-item>
-        <el-menu-item index="/chart">歷史圖表</el-menu-item>
         <el-menu-item index="/cache">快取管理</el-menu-item>
+        <el-menu-item index="/chart">歷史圖表</el-menu-item>
         <el-menu-item index="/query-pie">圓餅統計</el-menu-item>
         <el-menu-item index="/fugle-kdj">kdj</el-menu-item> 
         <el-menu-item index="/chatBot"> AI　聊天</el-menu-item>
