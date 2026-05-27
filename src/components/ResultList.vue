@@ -7,7 +7,7 @@
     </el-table>
     <el-pagination
       v-model:current-page="page"
-      :page-size="5"
+      :page-size="20"
       :total="data.length"
       layout="prev, pager, next"
     />
@@ -16,5 +16,5 @@
   import { computed, ref } from 'vue'
   const props = defineProps({ data: Array })
   const page = ref(1)
-  const pagedData = computed(() => props.data.slice((page.value - 1) * 5, page.value * 5))
+  const pagedData = computed(() => props.data.slice((page.value - 1) * 20, page.value * 20))
   </script>
