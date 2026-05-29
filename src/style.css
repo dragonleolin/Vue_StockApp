@@ -1,79 +1,135 @@
+/* ====================================================
+   1. 字體引入 (Google Fonts - 繁體像素風)
+==================================================== */
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&display=swap');
+
+/* ====================================================
+   2. 全域基礎設定 (Global Reset)
+==================================================== */
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --el-bg-color: transparent !important;
+  --el-bg-color-page: transparent !important;
+  --el-bg-color-overlay: transparent !important;
+  --el-fill-color-blank: transparent !important;
+  --el-mask-color: rgba(0, 0, 0, 0.8) !important;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
-body {
+html, body {
+  background-color: #05070A !important;
+  color: #E0E0E0 !important;
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
+  padding: 0;
+  width: 100%;
   min-height: 100vh;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+/* 確保 Vue 根節點與 Element Plus 佈局元件完全透明 */
+#app, 
+.app-container, 
+.el-container, 
+.el-header, 
+.el-main {
+  background: transparent !important;
+  background-color: transparent !important;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
+/* 全域連結樣式 */
+a {
+  color: #FFD700;
+  text-decoration: none;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+a:hover {
+  color: #FFF28A;
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+}
+
+/* ====================================================
+   3. Element Plus 全域版面透明化
+==================================================== */
+.el-container, .el-header, .el-main {
+  background-color: transparent !important;
+}
+
+/* --- 表格 (Table) 科技質感配色 --- */
+.el-table, 
+.el-table__expanded-cell,
+.el-table tr, 
+.el-table td {
+  background-color: transparent !important; 
+  /* 🌟 內文改為「冰藍色」：高清晰度、帶有科技感且不刺眼 */
+  color: #9EE9F8 !important; 
+  border-bottom: 1px solid rgba(0, 240, 255, 0.2) !important; 
+}
+
+/* 表頭特別加強：科技青螢光色 */
+.el-table th.el-table__cell {
+  color: #00F0FF !important; 
+  background-color: rgba(10, 15, 25, 0.8) !important; 
+  font-weight: bold;
+  letter-spacing: 1.5px;
+  border-bottom: 2px solid rgba(0, 240, 255, 0.5) !important; 
+}
+
+/* 🌟 滑鼠游標移過去的發光效果：背景微亮，文字變成金色呼應外框！ */
+.el-table tbody tr:hover > td {
+  background-color: rgba(0, 240, 255, 0.1) !important;
+  color: #FFD700 !important; 
+  text-shadow: 0 0 5px rgba(255, 215, 0, 0.5); /* 加上淡淡的金光 */
+}
+
+/* 隱藏表格最下方預設的白線 */
+.el-table::before {
+  display: none !important;
+}
+
+/* --- 輸入框 (Input) 黑金化 --- */
+.el-input__wrapper, .el-input__inner {
+  background-color: rgba(0, 0, 0, 0.7) !important;
+  color: #FFD700 !important;
+  box-shadow: 0 0 0 1px rgba(255, 215, 0, 0.4) inset !important; /* 金色邊框 */
+  transition: all 0.3s ease;
+}
+.el-input__inner::placeholder {
+  color: rgba(255, 215, 0, 0.3) !important;
+}
+/* 輸入框 Focus 狀態發光 */
+.el-input__wrapper.is-focus {
+  box-shadow: 0 0 0 1px rgba(255, 215, 0, 0.9) inset, 0 0 8px rgba(255, 215, 0, 0.3) !important;
+}
+
+/* --- 按鈕 (Button) 黑金化 --- */
+.el-button {
+  background-color: rgba(15, 15, 15, 0.9) !important;
+  color: #FFD700 !important;
+  border: 1px solid rgba(255, 215, 0, 0.5) !important;
   font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
+  transition: all 0.3s ease !important;
 }
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.el-button:hover {
+  background-color: rgba(255, 215, 0, 0.15) !important;
+  border-color: #FFD700 !important;
+  color: #FFF !important;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.4) !important;
 }
 
-.card {
-  padding: 2em;
+/* --- 分頁器 (Pagination) 黑金化 --- */
+.el-pagination button:disabled, 
+.el-pagination .btn-prev, 
+.el-pagination .btn-next,
+.el-pager li {
+  background-color: transparent !important;
+  color: #666 !important;
 }
-
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+.el-pager li:hover {
+  color: #FFD700 !important;
 }
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.el-pager li.is-active {
+  color: #FFD700 !important;
+  font-weight: bold;
+  text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
 }
